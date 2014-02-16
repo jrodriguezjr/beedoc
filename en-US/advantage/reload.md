@@ -7,14 +7,14 @@ sort: 3
 
 ## What is reload?
 
-What is reload? If you use nginx you probably know that nginx supports reload. It can use old process to serve old requests and use new process to serve new requests which mean it can upgrade the system and change the parameters without stop service. So reload and recompile are different concepts. Recompile is restart process by monitoring the changes and recompiling the files. `bee run` is this kind of tool.
+What is reload? If you use nginx you probably know that nginx supports reload. It can use old process to serve old requests and use new process to serve new requests which means it can upgrade the system and change the parameters without stop service. In Beego reload and recompile are different concepts. Recompile is defined as  restart of the main running process by monitoring any systeme changes and recompiling the files. `bee run` is this kind of tool.
 
 ## Is reload necessary?
 
-Many people would ask should HTTP application support reload? The answer is: yes. Upgrade without stopping service is our goal. Many people would say the service may broken. But this is high availability issues, don't confuse of them. Actually it is a predictable issue and we should prevent it from the problem caused by reload. Are you still trobling with the upgrading after the midnight? 
+Many people would ask should HTTP application support reload? The answer is: yes. Upgrade without stopping service is our goal. Many people would say the service may broken. But this is high availability issues, don't confuse of them. Actually it is a predictable issue and we should prevent it from the problem caused by reload. Are you still trobling with the upgrading after the midnight?
 Let's get started with reload!
 
-## How does beego support reload?
+## How does Beego support reload?
 
 The basic principle of reload is: fork a subprocess from the main process, then subprocess exec related program. So what does happen in this process? We know process forking will inherit all the handles, dada and stacks from main process to subprocess. But in the handles there is a `CloseOnExec` which is while execute `exec` if no excuse all the copied handles will be close. But what we want is subprocess can reuse `net.Listener` handle of main process. After executing `exec` function the process is "dead", system will replace the old code with new code, discard the old data and stack and reallocate new data and stack. The only thing left is the process id. For system this is the same process but indeed it's not anymore.
 
