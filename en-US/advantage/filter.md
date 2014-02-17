@@ -7,13 +7,13 @@ sort: 2
 
 Beego supports custom filter middlewares. E.g.: user authentication and force redirecton.
 
-Here is a filter function:
+Here is an example of a filter function:
 
 	beego.AddFilter(pattern, action string, filter FilterFunc)
 
 AddFilter's three params:
 
-- pattern: router rules. It can router based on the rules. Use `*` to match all.
+- pattern: router rules. It can route based on the rules. Use `*` to match all.
 - action: the place to execute Filter. There are four fixed params. They represent different execution process.
   - BeforeRouter: before finding router.
 	- AfterStatic: after static rendering.

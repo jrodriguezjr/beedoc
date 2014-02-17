@@ -3,16 +3,16 @@ name: Stand alone Deploy
 sort: 1
 ---
 
-# Stand alone Deploy
+# Standalone Deploy
 
 This will run application at backend as a deamon.
 
-## linux
+## Linux
 
 In Linux we can use `nohup` command to run application at backend:
 
 	nohup ./beepkg &
-	
+
 Your application is running in the keep process of Linux.
 
 ## Windows

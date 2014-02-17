@@ -5,23 +5,23 @@ sort: 1
 
 # Live Monitor
 
-We talked about toolbox module before. It will listen `127.0.0.1:8088` by default when application is running. It can't be accessed from internet but you can visit it by other ways such as nginx proxy.
+We talked about toolbox module before. It will listen on `127.0.0.1:8088` by default when application is running. It can't be accessed from internet but you can visit it by other ways such as nginx proxy.
 
->>> For security reason it is recommend to block 8088 in firewall.
+>>> For security reasons it is recommend to block 8088 in firewall.
 
-Monitor is disabled by default. You can enabled it by:
+Please note, the Monitor is disabled by default. You can enabled it by:
 
 	beego.EnableAdmin = true
-	
-Also you can change the port it listened:
+
+Also you can change the port it listens on:
 
 	beego.AdminHttpAddr = "localhost"
 	beego.AdminHttpPort = 8888
-	
+
 Open browser and visit `http://localhost:8088/` you will see `Welcome to Admin Dashboard`.
 
-It's the first version now. We will keep on developing it.
-	
+This tool is in it's first version now, however we intend to keep on developing it.
+
 ## Requests statistics
 
 Visit `http://localhost:8088/qps` you will see it:
@@ -55,7 +55,7 @@ You need to manually register the healthecheck logic to see the status of the he
 
 ## Tasks
 
-You can add task in your applicaion and check the task status or trigger it manually.
+You can add tasks in your applicaion and check the task status or trigger it manually.
 
 - Check task status: `http://localhost:8088/task`
 - Run task manually: `http://localhost:8088/runtask?taskname=task_name`
