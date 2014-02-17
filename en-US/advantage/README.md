@@ -6,15 +6,15 @@ sort: 6
 
 # Advanced Beego
 
-We have demonstrated the basic use of Beego. Now we will talk about more about some advanced topics and features.
+Now that we have demonstrated the basic use of Beego. Let's talk about some more advanced topics and features.
 
 - [The In Process Monitor](./monitor.md)
 
-  By default, Beego will serve out of two ports. The main port is 8080 for application to serve users. Another is 8088, to moniter the applicaitons internal process status, execution of tasks, and other stuff.
+  By default, Beego will open and serve out of two ports, an applicaiton service port and appliction monitoring port. Port 8080 is used as the main application service port your app will use to serve users. Another is port 8088, this port is used to moniter the applicaiton's internal process status, execution of tasks, and other interersting stuff.
 
 - [Filters](./filter.md)
 
-  Filters is a very convenient feature for you to extend your logic. Through use of Filters you can easily implement extended functionality like user authentication, log visiting, compatibility switching and so on.
+  Filters is a very convenient and powerful feature for you to extend your logic. Through use of Filters you can easily implement extended functionality like user authentication, log visiting, compatibility switching and so on.
 
 - [Reload](./reload.md)
 
