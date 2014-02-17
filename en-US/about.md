@@ -4,7 +4,7 @@
 
 This manual documents aspects of beego app framework.
 
-### New to beego?
+### New to Beego?
 
 Read about the [Quick Start](quickstart).
 
