@@ -2,7 +2,7 @@
 
 [![Build Status](https://drone.io/github.com/beego/beewatch/status.png)](https://drone.io/github.com/beego/beewatch/latest)
 
-Bee Watch is an interactive debugger for the Go programming language.
+Bee Watch is an interactive debugger tool for the Go programming language.
 
 ## Features
 
@@ -73,7 +73,7 @@ Bee Watch is a "go get" able Go project, you can execute the following command t
 		case <-time.After(3 * time.Second):
 			beewatch.Trace().Printf("Done debug")
 		}
-	
+
 		// Close debugger,
 		// it's not useful when you debug a web server that may not have an end.
 		beewatch.Close()

@@ -2,11 +2,11 @@
 
 [![Build Status](https://drone.io/github.com/astaxie/beego/status.png)](https://drone.io/github.com/astaxie/beego/latest) [![Go Walker](http://gowalker.org/api/v1/badge)](http://gowalker.org/github.com/astaxie/beego)
 
-This manual documents aspects of beego app framework.
+This manual documents aspects of beego application framework.
 
 ### New to Beego?
 
-Read about the [Quick Start](quickstart).
+Read more about it in this [Quick Start](quickstart).
 
 ### Can't find what you're looking for?
 
@@ -14,13 +14,13 @@ Search our [mailing list (beego-framework@googlegroups.com)](https://groups.goog
 
 ### Need help?
 
-Send an email to the [beego-framework@googlegroups.com](mailto:beego-framework@googlegroups.com).
+Send us an email to the [beego-framework@googlegroups.com](mailto:beego-framework@googlegroups.com).
 
 ### Find a bug?
 
 Open an [issue on github](https://github.com/astaxie/beego/issues).
 
-### Want to contribute?
+### Want to contribute to the docs?
 
 Fork the [documentation project](https://github.com/beego/beedoc), edit and pull request.
 

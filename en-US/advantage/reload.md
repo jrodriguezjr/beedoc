@@ -7,7 +7,7 @@ sort: 3
 
 ## What is reload?
 
-What is reload? If you use nginx you probably know that nginx supports process reloads. It can use old process to serve old requests and use new process to serve new requests which means it can upgrade the system and change the parameters without stopping the service. In Beego however, reload and recompile are different concepts. Recompile happen on system changes. In turn this triggers a restart of the main running process by monitoring any recompiling of files. `bee run` is this kind of tool.
+What is reload? If you have used nginx, you probably know that nginx supports process reloads. It can use old process to serve old requests and use new process to serve new requests which means it can upgrade the system and change the parameters without stopping and re-starting the service. Beego strives for similar feature, in Beego however, active reload and recompile of application are different concepts. Recompiles happen upon application changes. In turn this triggers a restart of the main running process by monitoring any recompiling of files. `bee run` is this kind of tool.
 
 ## Is reload necessary?
 

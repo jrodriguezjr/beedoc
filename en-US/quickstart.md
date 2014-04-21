@@ -2,7 +2,7 @@
 
 ## Installation
 
-Beego contains sample applications to help you learn and use the beego app framework.
+This Beego quickstart contains sample applications to help you learn and use the beego app framework.
 
 You will need a functioning Go 1.1 installation for this to work.
 
@@ -40,19 +40,19 @@ Once it's running, open a browser to [http://localhost:8080/](http://localhost:8
 The following example prints `Hello world` to your browser, it shows how easy it is to build a web application with beego.
 
 	package main
-	
+
 	import (
 		"github.com/astaxie/beego"
 	)
-	
+
 	type MainController struct {
 		beego.Controller
 	}
-	
+
 	func (this *MainController) Get() {
 		this.Ctx.WriteString("hello world")
 	}
-	
+
 	func main() {
 		beego.Router("/", &MainController{})
 		beego.Run()
@@ -63,12 +63,12 @@ Save file as `hello.go`, build and run it:
 	$ go build -o hello hello.go
 	$ ./hello
 
-Open [http://127.0.0.1:8080](http://127.0.0.1:8080) in your browser and you will see `hello world`.
+Next, open [http://127.0.0.1:8080](http://127.0.0.1:8080) in your browser and you should see `hello world`.
 
-What is happening in the scenes of the above example?
+So lets recap what is happening behind the scenes in the above example:
 
 1. We import package `github.com/astaxie/beego`. As we know, Go initializes packages and runs init() in every package ([more details](https://github.com/Unknwon/build-web-application-with-golang_EN/blob/master/eBook/02.3.md#main-function-and-init-function)), so beego initializes the `BeeApp` application at this time.
-2. Define the controller. We define a struct called `MainController` with a anonymous field `beego.Controller`, so the `MainController` has all methods that `beego.Controller` has.
+2. We define the main controller. We define a struct called `MainController` with a anonymous field `beego.Controller`, so the `MainController` has all methods that `beego.Controller` has.
 3. Define some RESTful methods. Due to the anonymous field above, `MainController` already has `Get`, `Post`, `Delete`, `Put` and other methods, these methods will be called when user sends a corresponding request (e.g. the `Post` method is called to handle requests using POST. Therefore, after we overloaded the `Get` method in `MainController`, all GET requests will use that method in `MainController` instead of in `beego.Controller`.
 4. Define the main function. All applications in Go use `main` as their entry point like C does.
 5. Register routers. This tells beego which controller is responsible for specific requests. Here we register `MainController` for `/`, so all requests to `/` will be handed by `MainController`. Be aware that the first argument is the path and the second one is pointer to the controller you want to register.
