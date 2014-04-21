@@ -125,10 +125,10 @@ httplib 包里面支持如下的方法返回 request 对象：
 
 	返回结果保存到文件名为 filename 的文件中
 	
-- 解析为 JSON 结构，`req.ToJson(result)` 方法
+- 解析为 JSON 结构，`req.ToJson(&result)` 方法
 
 	返回结构直接解析为 JSON 格式，解析到 result 对象中
 	
-- 解析为 XML 结构，`req.ToXML(result)` 方法
+- 解析为 XML 结构，`req.ToXML(&result)` 方法
 
 	返回结构直接解析为 XML 格式，解析到 result 对象中	

@@ -249,7 +249,7 @@ qs.Limit(10)
 // LIMIT 10
 
 qs.Limit(10, 20)
-// LIMIT 10 OFFSET 20
+// LIMIT 10 OFFSET 20 注意跟SQL反过来的
 
 qs.Limit(-1)
 // no limit
@@ -336,7 +336,7 @@ fmt.Printf("Affected Num: %s, %s", num, err)
 num, err := o.QueryTable("user").Update(orm.Params{
 	"nums": orm.ColValue(orm.Col_Add, 100),
 })
-// SET nums = nums + 1
+// SET nums = nums + 100
 ```
 
 orm.ColValue 支持以下操作
@@ -369,7 +369,7 @@ qs := o.QueryTable("user")
 i, _ := qs.PrepareInsert()
 for _, user := range users {
 	id, err := i.Insert(user)
-	if err != nil {
+	if err == nil {
 		...
 	}
 }

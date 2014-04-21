@@ -7,7 +7,7 @@ sort: 2
 
 The example of beego/orm:
 
-This section is based on this example if no particular explain.
+All the code samples in this section are based on this example if not stated otherwise.
 
 ##### models.go:
 
@@ -149,7 +149,13 @@ orm.DefaultTimeLoc = time.UTC
 ```
 ORM will get timezone of database while `RegisterDataBase`. When set or get time.Time it will convert accordingly to match system time and make sure the time is correct.
 
-**Note:** Because of Sqlite3 set and get use UTC time by default.
+**Note:**
+
+* Because of Sqlite3 set and get use UTC time by default.
+* When use `go-sql-driver` driver，please attention your DSN config.
+  From a version of `go-sql-driver` default use utc timezone not local. So if you use another timezone, please set it.
+  eg: `root:root@/orm_test?charset=utf8&loc=Asia%2FShanghai`
+  ref: [loc](https://github.com/go-sql-driver/mysql#loc) / [parseTime](https://github.com/go-sql-driver/mysql#parsetime)
 
 ## Registering Model
 
@@ -196,6 +202,45 @@ orm.RegisterModelWithPrefix("prefix_", new(User))
 
 The created table name is prefix_user
 
+#### NewOrmWithDB
+
+May be some time need manage db pools by yourself. (eg: need two query in one connection)
+
+But you want use orm awesome features. Bingo!
+
+```go
+var driverName, aliasName string
+// driverName name of your driver (go-sql-driver: mysql)
+// aliasName custom db alias name
+var db *sql.DB
+...
+o := orm.NewOrmWithDB(driverName, aliasName, db)
+```
+
+#### GetDB
+
+Get *sql.DB from registered databases. Use `default` as default if you not set.
+
+```go
+db, err := orm.GetDB()
+if err != nil {
+	fmt.Println("get default DataBase")
+}
+
+db, err := orm.GetDB("alias")
+if err != nil {
+	fmt.Println("get alias DataBase")
+}
+```
+
+#### ResetModelCache
+
+Reset registered models. Common use for write test case.
+
+```go
+orm.ResetModelCache()
+```
+
 ## ORM API Usage
 
 Let's see how to use Ormer API:
@@ -206,7 +251,7 @@ o = orm.NewOrm() // create a Ormer // While running NewOrm, it will run orm.Boot
 ```
 Switching database or using transactions will affect Ormer object and all its queries.
 
-So don't use global Ormer object if you need to switch databas or use transactions.
+So don't use a global Ormer object if you need to switch databases or use transactions.
 
 
 * type Ormer interface {
@@ -236,7 +281,7 @@ Pass in a table name or a Model object and return a [QuerySeter](query.md#querys
 o := orm.NewOrm()
 var qs QuerySeter
 qs = o.QueryTable("user")
-// If can't find table, it will panic
+// Panics if the table can't be found
 ```
 
 #### Using
@@ -301,16 +346,16 @@ fmt.Println(dr.Type() == orm.DR_Sqlite) // true
 
 ## Print out SQL query in debugging mode
 
-Set `orm.Debug` to true will print out SQL queries
+Setting `orm.Debug` to true will print out SQL queries
 
-It may cause performance issues. It's not recommend to use in production env.
+It may cause performance issues. It's not recommend to be used in production env.
 
 ```go
 func main() {
 	orm.Debug = true
 ...
 ```
-Output with `os.Stderr` by default.
+Prints to `os.Stderr` by default.
 
 You can change it to your own `io.Writer`
 
@@ -339,4 +384,4 @@ Logs formatting
 [ORM] - 2013-08-09 13:18:16 - [Queries/default] - [    db.Exec /     0.4ms] - [DELETE FROM `post` WHERE `id` IN (?)] - `68`
 ```
 
-The logs contains all the database operations, transactions, prepare etc.
+The log contains all the database operations, transactions, prepare etc.

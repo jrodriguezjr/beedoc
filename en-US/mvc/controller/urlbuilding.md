@@ -1,6 +1,6 @@
 ---
 name: URL Building
-sort: 2
+sort: 7
 ---
 
 ## URL Building
@@ -10,7 +10,7 @@ Here is the controller definition:
 
 ```
 type TestController struct {
-	Controller
+	beego.Controller
 }
 
 func (this *TestController) Get() {

@@ -1,6 +1,6 @@
 ---
 name: URL构建
-sort: 2
+sort: 7
 ---
 
 ## URL 构建
@@ -10,7 +10,7 @@ sort: 2
 
 ```
 type TestController struct {
-	Controller
+	beego.Controller
 }
 
 func (this *TestController) Get() {

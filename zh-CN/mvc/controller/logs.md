@@ -16,7 +16,7 @@ beego 之前介绍的时候说过是基于几个模块搭建的，beego 的日�
 	beego.Info("this is info")
 	beego.Warn("this is warn")
 	beego.Error("this is error")
-	beego.Crital("this is crital")
+	beego.Critcal("this is critcal")
 
 ## 设置输出
 
@@ -44,6 +44,14 @@ beego 之前介绍的时候说过是基于几个模块搭建的，beego 的日�
 级别依次上升，默认全部打印，但是一般我们在部署环境，可以通过设置级别设置日志级别：
 
 	beego.SetLevel(beego.LevelInfo)
+	
+## 输出文件名和行号
+
+日志默认不输出调用的文件名和文件行号,如果你期望输出调用的文件名和文件行号,可以如下设置
+
+	beego.SetLogFuncCall(true)
+	
+开启传入参数true,关闭传入参数false,默认是关闭的.			
 	
 ## 完整示例
 

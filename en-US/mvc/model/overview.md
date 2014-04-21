@@ -9,7 +9,7 @@ sort: 1
 
 Beego ORM is a powerful ORM framework in Go. It's inspired by Django ORM and SQLAlchemy.
 
-This framework is still under developing so any kind of uncompatible changes might happen.
+This framework is still under development so any kind of uncompatible changes might happen.
 
 **Supported Database:**
 
@@ -17,7 +17,7 @@ This framework is still under developing so any kind of uncompatible changes mig
 * PostgreSQL：[github.com/lib/pq](https://github.com/lib/pq)
 * Sqlite3：[github.com/mattn/go-sqlite3](https://github.com/mattn/go-sqlite3)
 
-All of the database driver passed the tests. But we still need your feedbacks and bug reports.
+All of the database drivers passed the tests. But we still need your feedback and bug reports.
 
 **ORM Features:**
 
@@ -36,7 +36,23 @@ You can learn more in the document.
 
 ## Change log
 
-	[Load Related Fields](query.md#load-related-field)
+* 2014-03-10: [GetDB](orm.md#getdb) Get *sql.DB from registered databases. [ResetModelCache](orm.md#resetmodelcache) reset registered models.
+* 2014-02-10: beego1.1.0 Change log
+  - About [Timezone](orm.md#时区设置)
+
+  - Add api:
+  Ormer.[InsertMulti](object.md#insertmulti)
+  Ormer.[ReadOrCreate](object.md#readorcreate)
+  RawSeter.[RowsToMap](rawsql.md#rowstomap)
+  RawSeter.[RowsToStruct](rawsql.md#rowstostruct)
+  orm.[NewOrmWithDB](orm.md#newormwithdb)
+
+  - Modify api:
+  RawSeter.[Values](rawsql.md#values) support set columns
+  RawSeter.[ValuesList](rawsql.md#valueslist) support set columns
+  RawSeter.[ValuesFlat](rawsql.md#valuesflat) support set column
+  RawSeter.[QueryRow/QueryRows](rawsql.md#queryrow) changed to map struct field with column name（don't need order by field index）
+
 * 2013-10-14: [Load Related Fields](query.md#load-related-field), [Handling ManyToMany Relation](query.md#handling-manytomany-relation), improved [Relational Queries](query.md#relational-query)
 * 2013-10-09: [Atom operation updating](query.md#update)
 * 2013-09-22: [RegisterDataBase](orm.md#registerdatabase) maxIdle and maxConn are changed to optional params, MySQL [Custom engine](models.md#custom-engine)
